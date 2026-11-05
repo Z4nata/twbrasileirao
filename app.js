@@ -21,6 +21,7 @@ const pct0 = v => v == null ? '0%' : v >= .995 ? '100%' : v < .005 ? (v > 0 ? '<
 const dec = v => v.toFixed(1).replace('.', ',');
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const nome = t => NOMES[t.nome] || t.nome;
+const doTime = t => (nome(t) === 'Chapecoense' ? 'da ' : 'do ') + nome(t);   // "do Bahia", "da Chapecoense"
 const cor = t => { const [a, b] = CORES[nome(t)] || ['#6E6B78', '#2A2933']; return `<i class="cor" style="--c1:${a};--c2:${b}" aria-hidden="true"></i>`; };
 const BRT = d => new Date(d.getTime() - 3 * 3600e3);
 const ymd = d => BRT(d).toISOString().slice(0, 10);
@@ -163,16 +164,22 @@ function desenharJogos() {
     const k = S.foco.findIndex(x => x.casa === g.casa && x.fora === g.fora), fo = S.foco[k];
     const st = vivo ? `<span class="ao-vivo">AO VIVO</span> ${esc(g.detalhe || g.min + "'")}` : fim ? 'Encerrado' : quando(g.data);
     const placar = (vivo || fim) ? `<b>${g.gc}</b><i>×</i><b>${g.gf}</b>` : '<i>×</i>';
+    // 1. the match itself: chance of each result (for a live game, from the current score and the time left)
+    const odds = fo ? `<div class="jg-odds" role="img" aria-label="${esc(`Chance de cada resultado: ${nome(c)} ${pct0(fo.n[0])}, empate ${pct0(fo.n[1])}, ${nome(f)} ${pct0(fo.n[2])}`)}">
+        <span class="o-c" style="flex:${fo.n[0]}"></span><span class="o-e" style="flex:${fo.n[1]}"></span><span class="o-f" style="flex:${fo.n[2]}"></span></div>
+      <div class="jg-odds-l"><span><b>${pct0(fo.n[0])}</b> ${esc(nome(c))}</span><span><b>${pct0(fo.n[1])}</b> empate</span><span><b>${pct0(fo.n[2])}</b> ${esc(nome(f))}</span></div>` : '';
+    // 2. what each result does to the table, from each team's side
     let linhas = '';
     for (const [lado, t] of [[0, c], [1, f]]) {
       const m = metricaDe(t.id); if (!m) continue;
-      const chave = m === 'titulo' ? 'titulo' : m;
-      if (vivo) linhas += `<li><span>${esc(nome(t))} ${ROT[m]}</span><b>${pct0(R(t.id)[chave])}</b>${delta(R(t.id)[chave], B(t.id)?.[chave])}</li>`;
-      else if (fo) { const v = fo.lados[lado][m === 'titulo' ? 'tit' : m], o = lado === 0 ? [0, 1, 2] : [2, 1, 0]; linhas += `<li><span>${esc(nome(t))} ${ROT[m]}</span><em>V ${pct0(v[o[0]])}</em><em>E ${pct0(v[o[1]])}</em><em>D ${pct0(v[o[2]])}</em></li>`; }
+      const chave = m === 'titulo' ? 'titulo' : m, rot = `Chance ${esc(doTime(t))} ${m === 'cai' ? 'cair' : m === 'titulo' ? 'ser campeão' : 'ir à Libertadores'}`;
+      if (vivo) linhas += `<li><span class="jg-q">${rot}</span><span class="jg-agora">agora <b>${pct0(R(t.id)[chave])}</b>${delta(R(t.id)[chave], B(t.id)?.[chave])}${B(t.id) ? ` <small>antes do jogo ${pct0(B(t.id)[chave])}</small>` : ''}</span></li>`;
+      else if (fo) { const v = fo.lados[lado][m === 'titulo' ? 'tit' : m], o = lado === 0 ? [0, 1, 2] : [2, 1, 0];
+        linhas += `<li><span class="jg-q">${rot}</span><span class="jg-se"><em>se vencer<b>${pct0(v[o[0]])}</b></em><em>se empatar<b>${pct0(v[o[1]])}</b></em><em>se perder<b>${pct0(v[o[2]])}</b></em></span></li>`; }
     }
     return `<article class="jg${vivo ? ' vivo' : ''}${fim ? ' fim' : ''}"><span class="jg-st">${st}</span>
       <div class="jg-pl"><span class="jg-t">${cor(c)}${esc(nome(c))}</span><span class="jg-g">${placar}</span><span class="jg-t f">${esc(nome(f))}${cor(f)}</span></div>
-      ${linhas ? `<ul class="jg-ch">${linhas}</ul>` : `<p class="jg-nada">${fim ? 'Já está na tabela.' : 'Sem título, Libertadores ou Z4 em jogo.'}</p>`}</article>`;
+      ${odds}${linhas ? `<ul class="jg-ch">${linhas}</ul>` : `<p class="jg-nada">${fim ? 'Já está na tabela.' : 'Nenhum dos dois tem título, Libertadores ou Z4 em jogo.'}</p>`}</article>`;
   }).join(''));
 }
 

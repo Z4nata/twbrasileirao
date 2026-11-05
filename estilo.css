@@ -56,7 +56,7 @@ main > section, main > aside { max-width: var(--larg); margin-left: auto; margin
 .faixa-cab { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px }
 .faixa-cab h2 { font-size: 26px }
 .faixa-sub { color: var(--suave); font-size: 14px }
-.faixa { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(260px, 300px); gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 14px 0 10px; scrollbar-width: thin; scrollbar-color: var(--linha-2) transparent }
+.faixa { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(280px, 320px); gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 14px 0 10px; scrollbar-width: thin; scrollbar-color: var(--linha-2) transparent }
 .jg { scroll-snap-align: start; border: 1px solid var(--linha); border-radius: var(--r); background: var(--painel); padding: 14px 14px 12px; display: flex; flex-direction: column; gap: 10px; min-width: 0 }
 .jg.vivo { border-color: var(--verde); box-shadow: 0 0 0 1px var(--verde), 0 0 30px -14px var(--verde-luz) }
 .jg.fim { opacity: .7 }
@@ -69,11 +69,23 @@ main > section, main > aside { max-width: var(--larg); margin-left: auto; margin
 .jg-g { font-family: var(--f-num); font-size: 28px; line-height: 1; display: inline-flex; gap: 6px; align-items: center; font-variant-numeric: tabular-nums }
 .jg-g b { font-weight: 400 }
 .jg-g i { font-style: normal; color: var(--apagado); font-size: 20px }
-.jg-ch { list-style: none; margin: 0; padding: 8px 0 0; border-top: 1px solid var(--linha); display: flex; flex-direction: column; gap: 4px }
-.jg-ch li { display: flex; align-items: baseline; gap: 8px; font-size: 13px; flex-wrap: wrap }
-.jg-ch li span { color: var(--suave); margin-right: auto }
-.jg-ch li b { font-family: var(--f-num); font-weight: 400; font-size: 20px; color: var(--verde) }
-.jg-ch em { font-style: normal; font-weight: 700; font-variant-numeric: tabular-nums }
+.jg-odds { display: flex; height: 8px; border-radius: 999px; overflow: hidden; gap: 2px }
+.jg-odds span { min-width: 2px }
+.o-c { background: var(--osso) } .o-e { background: var(--apagado) } .o-f { background: var(--lilas) }
+.jg-odds-l { display: flex; justify-content: space-between; gap: 6px; font-size: 12px; color: var(--suave); margin-top: -4px }
+.jg-odds-l span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0 }
+.jg-odds-l span:nth-child(2) { text-align: center } .jg-odds-l span:nth-child(3) { text-align: right }
+.jg-odds-l b { color: var(--osso); font-weight: 800; font-variant-numeric: tabular-nums }
+.jg-ch { list-style: none; margin: 0; padding: 10px 0 0; border-top: 1px solid var(--linha); display: flex; flex-direction: column; gap: 10px }
+.jg-ch li { display: flex; flex-direction: column; gap: 6px; font-size: 13px }
+.jg-q { color: var(--suave) }
+.jg-se { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px }
+.jg-se em { font-style: normal; display: flex; flex-direction: column; gap: 2px; padding: 6px 8px; border-radius: 10px; background: var(--painel-2); font-size: 11px; color: var(--apagado); font-weight: 600 }
+.jg-se em b { font-family: var(--f-num); font-weight: 400; font-size: 22px; line-height: 1; color: var(--osso); font-variant-numeric: tabular-nums }
+.jg-se em:first-child b { color: var(--verde) } .jg-se em:last-child b { color: var(--lilas) }
+.jg-agora { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; color: var(--suave) }
+.jg-agora b { font-family: var(--f-num); font-weight: 400; font-size: 24px; line-height: 1; color: var(--verde) }
+.jg-agora small { color: var(--apagado); font-size: 12px }
 .jg-nada { margin: 0; color: var(--apagado); font-size: 13px; border-top: 1px solid var(--linha); padding-top: 8px }
 .cor { flex: none; display: inline-block; width: 6px; height: 18px; border-radius: 2px; background: linear-gradient(var(--c1) 0 50%, var(--c2) 50% 100%) }
 .delta { font-size: 12px; font-weight: 800; margin-left: 4px; white-space: nowrap; font-family: var(--f-txt) }
