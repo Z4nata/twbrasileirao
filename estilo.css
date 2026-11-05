@@ -79,6 +79,8 @@ main > section, main > aside { max-width: var(--larg); margin-left: auto; margin
 .jg-ch { list-style: none; margin: 0; padding: 10px 0 0; border-top: 1px solid var(--linha); display: flex; flex-direction: column; gap: 10px }
 .jg-ch li { display: flex; flex-direction: column; gap: 6px; font-size: 13px }
 .jg-q { color: var(--suave) }
+.jg-q .jg-hoje { font-family: var(--f-num); font-weight: 400; font-size: 20px; line-height: 1; color: var(--osso) }
+.jg-depois { color: var(--apagado); font-size: 12px; margin-bottom: -2px }
 .jg-se { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px }
 .jg-se em { font-style: normal; display: flex; flex-direction: column; gap: 2px; padding: 6px 8px; border-radius: 10px; background: var(--painel-2); font-size: 11px; color: var(--apagado); font-weight: 600 }
 .jg-se em b { font-family: var(--f-num); font-weight: 400; font-size: 22px; line-height: 1; color: var(--osso); font-variant-numeric: tabular-nums }
