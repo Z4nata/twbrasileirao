@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chances ao vivo do Brasileirão | The Worst of Brasileirão</title>
+<meta name="description" content="Título, Libertadores e Z4 do Brasileirão 2026 em chances, recalculadas a cada placar. Simulação do The Worst of Brasileirão com dados da ESPN.">
+<meta name="theme-color" content="#0E0E12">
+<meta property="og:type" content="website">
+<meta property="og:title" content="O Brasileirão em chances, ao vivo">
+<meta property="og:description" content="Título, Libertadores e Z4, minuto a minuto. Do @theworstofbrasileirao.">
+<meta property="og:image" content="https://twbrasileirao.com.br/img/og.jpg">
+<meta property="og:url" content="https://twbrasileirao.com.br/">
+<link rel="canonical" href="https://twbrasileirao.com.br/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preload" href="fontes/Anton-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fontes/Outfit-VF.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<a class="pular" href="#tabela">Pular para a tabela das chances</a>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="marca" href="#topo" aria-label="The Worst of Brasileirão, início">
+      <span class="m1">THE <b>WORST</b> OF</span><span class="m2">BRASILEIRÃO</span>
+    </a>
+    <span class="status" id="status" data-estado="carregando"><i aria-hidden="true"></i><span>Carregando</span></span>
+  </div>
+</header>
+
+<main id="topo">
+  <section class="faixa-sec" id="jogos-sec" aria-labelledby="jogos-tit">
+    <div class="faixa-cab"><h2 id="jogos-tit">Jogos</h2><span class="faixa-sub" id="jogos-sub">ao vivo e próximos, com a chance mudando a cada placar</span></div>
+    <div class="faixa" id="jogos"><div class="sk sk-jogo"></div><div class="sk sk-jogo"></div><div class="sk sk-jogo"></div></div>
+  </section>
+
+  <aside class="ad ad-topo" aria-label="Espaço publicitário" data-slot="topo">
+    <div class="ad-in"><span class="ad-tag">Publicidade</span><p>Sua marca na frente de quem acompanha cada lance da reta final.</p><a class="btn btn-ad" href="https://ig.me/m/theworstofbrasileirao" target="_blank" rel="noopener">Anuncie aqui</a></div>
+  </aside>
+
+  <section class="principal" id="tabela">
+    <div class="tab-col">
+      <h1>A tabela das chances</h1>
+      <p class="lead">O fim do Brasileirão simulado 20 mil vezes a cada atualização. Toque num time para ver o caminho dele até a última rodada.</p>
+      <div class="filtros" role="group" aria-label="Filtrar a tabela" id="filtros">
+        <button type="button" data-f="todos" aria-pressed="true">Todos</button>
+        <button type="button" data-f="titulo" aria-pressed="false">Título</button>
+        <button type="button" data-f="liberta" aria-pressed="false">Libertadores</button>
+        <button type="button" data-f="sula" aria-pressed="false">Sul-Americana</button>
+        <button type="button" data-f="z4" aria-pressed="false">Z4</button>
+      </div>
+      <div class="tabela-rolagem"><table class="tab" id="tab"><caption class="vh">Chances de cada time no fim do Brasileirão 2026</caption><tbody><tr><td><div class="sk sk-tab"></div></td></tr></tbody></table></div>
+      <p class="rodape-tab" id="rodape-tab"></p>
+    </div>
+    <aside class="ad ad-coluna" aria-label="Espaço publicitário" data-slot="coluna">
+      <div class="ad-in"><span class="ad-tag">Publicidade</span><p>Fixo ao lado da tabela, onde a pessoa passa mais tempo.</p><a class="btn btn-ad" href="https://ig.me/m/theworstofbrasileirao" target="_blank" rel="noopener">Anuncie aqui</a></div>
+    </aside>
+  </section>
+
+  <section class="cur-sec" id="curiosidades" aria-labelledby="cur-tit">
+    <h2 id="cur-tit">Curiosidades da reta final</h2>
+    <div class="cur" id="cur"><div class="sk sk-cur"></div><div class="sk sk-cur"></div><div class="sk sk-cur"></div></div>
+  </section>
+
+  <aside class="ad ad-meio" aria-label="Espaço publicitário" data-slot="meio">
+    <div class="ad-in"><span class="ad-tag">Publicidade</span><p>Patrocine o painel da reta final do Brasileirão.</p><a class="btn btn-ad" href="https://ig.me/m/theworstofbrasileirao" target="_blank" rel="noopener">Anuncie aqui</a></div>
+  </aside>
+
+  <section class="metodo" id="metodo">
+    <details>
+      <summary>Como a conta é feita</summary>
+      <div class="metodo-txt">
+        <p>Cada time ganha uma força de ataque e uma de defesa, tiradas dos gols que marcou e sofreu no campeonato, puxadas um pouco para a média. Os gols de cada jogo que falta são sorteados a partir dessas forças, com vantagem para o mandante.</p>
+        <p>O campeonato inteiro é jogado 20 mil vezes a cada atualização. Com jogo rolando, vale o placar do momento e só o tempo que falta é sorteado. A chance é a fração das simulações em que aquilo acontece.</p>
+        <p>Libertadores conta até o 6º lugar e Sul-Americana do 7º ao 12º. Vagas extras por títulos de copa não entram na conta. Desempate: vitórias, saldo e gols pró. Dados da ESPN. É estimativa, não previsão.</p>
+      </div>
+    </details>
+  </section>
+
+  <aside class="ad ad-rodape" aria-label="Espaço publicitário" data-slot="rodape">
+    <div class="ad-in"><span class="ad-tag">Publicidade</span><p>Um espaço no fim da página, para quem leu tudo.</p><a class="btn btn-ad" href="https://ig.me/m/theworstofbrasileirao" target="_blank" rel="noopener">Anuncie aqui</a></div>
+  </aside>
+
+  <section class="ig" id="instagram">
+    <div class="ig-txt">
+      <h2>Os números viram meme no Instagram</h2>
+      <p class="lead">Reels, pôsteres de dia de jogo e o pós-jogo de cada rodada, todo dia até a última rodada.</p>
+      <a class="btn btn-pri" href="https://www.instagram.com/theworstofbrasileirao/" target="_blank" rel="noopener">Seguir no Instagram</a>
+    </div>
+    <div class="ig-grade">
+      <a href="https://www.instagram.com/theworstofbrasileirao/" target="_blank" rel="noopener"><img src="img/ig-1.jpg" width="320" height="400" loading="lazy" alt="Pôster de dia de jogo: Palmeiras x Remo, com um javali e um leão cara a cara"></a>
+      <a href="https://www.instagram.com/theworstofbrasileirao/" target="_blank" rel="noopener"><img src="img/ig-2.jpg" width="320" height="400" loading="lazy" alt="Carrossel: quem tem o caminho mais fácil para fugir do Z4"></a>
+      <a href="https://www.instagram.com/theworstofbrasileirao/" target="_blank" rel="noopener"><img src="img/ig-3.jpg" width="320" height="400" loading="lazy" alt="Pôster de dia de jogo: Vitória x Fluminense, um leão pendurado no penhasco"></a>
+      <a href="https://www.instagram.com/theworstofbrasileirao/" target="_blank" rel="noopener"><img src="img/ig-4.jpg" width="320" height="400" loading="lazy" alt="Carrossel: time grande não cai, a tabela discorda"></a>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="rodape-in">
+    <a class="marca" href="#topo"><span class="m1">THE <b>WORST</b> OF</span><span class="m2">BRASILEIRÃO</span></a>
+    <p>Memes, dramas e números da reta final. Dados da ESPN, simulação nossa. Estimativa, não previsão.</p>
+  </div>
+</footer>
+<div class="grao" aria-hidden="true"></div>
+<script src="app.js" type="module"></script>
+</body>
+</html>
