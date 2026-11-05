@@ -157,7 +157,7 @@ function desenharJogos() {
   const faixa = S.faixa || [];
   const temVivo = faixa.some(g => g.estado === 'in');
   $('jogos-tit').textContent = temVivo ? 'Ao vivo' : 'Próximos jogos';
-  $('jogos-sub').textContent = temVivo ? 'placar e chances atualizando a cada 45 segundos' : 'o que cada resultado faz com as chances';
+  $('jogos-sub').textContent = temVivo ? 'placar e chances atualizando a cada 45 segundos' : 'a chance de cada resultado e como ele muda o fim do campeonato';
   if (!faixa.length) { setHTML('jogos', '<p class="vazio">Nenhum jogo marcado. As chances abaixo já são as finais.</p>'); return; }
   setHTML('jogos', faixa.map(g => {
     const c = T(g.casa), f = T(g.fora), vivo = g.estado === 'in', fim = g.estado === 'post';
@@ -172,10 +172,13 @@ function desenharJogos() {
     let linhas = '';
     for (const [lado, t] of [[0, c], [1, f]]) {
       const m = metricaDe(t.id); if (!m) continue;
-      const chave = m === 'titulo' ? 'titulo' : m, rot = `Chance ${esc(doTime(t))} ${m === 'cai' ? 'cair' : m === 'titulo' ? 'ser campeão' : 'ir à Libertadores'}`;
-      if (vivo) linhas += `<li><span class="jg-q">${rot}</span><span class="jg-agora">agora <b>${pct0(R(t.id)[chave])}</b>${delta(R(t.id)[chave], B(t.id)?.[chave])}${B(t.id) ? ` <small>antes do jogo ${pct0(B(t.id)[chave])}</small>` : ''}</span></li>`;
+      // the season chance as it stands now, then where it goes after this game, for each result
+      const chave = m === 'titulo' ? 'titulo' : m, oque = m === 'cai' ? 'cair' : m === 'titulo' ? 'ser campeão' : 'ir à Libertadores';
+      if (vivo) linhas += `<li><span class="jg-q">Chance ${esc(doTime(t))} ${oque}, com o placar de agora: <b class="jg-hoje">${pct0(R(t.id)[chave])}</b>${delta(R(t.id)[chave], B(t.id)?.[chave])}</span>${B(t.id) ? `<span class="jg-depois">antes do jogo era ${pct0(B(t.id)[chave])}</span>` : ''}</li>`;
       else if (fo) { const v = fo.lados[lado][m === 'titulo' ? 'tit' : m], o = lado === 0 ? [0, 1, 2] : [2, 1, 0];
-        linhas += `<li><span class="jg-q">${rot}</span><span class="jg-se"><em>se vencer<b>${pct0(v[o[0]])}</b></em><em>se empatar<b>${pct0(v[o[1]])}</b></em><em>se perder<b>${pct0(v[o[2]])}</b></em></span></li>`; }
+        linhas += `<li><span class="jg-q">Chance ${esc(doTime(t))} ${oque}: <b class="jg-hoje">${pct0(R(t.id)[chave])}</b> agora</span>
+          <span class="jg-depois">depois do jogo, se ${t.nome === 'Chapecoense' ? 'a' : 'o'} ${esc(nome(t))}...</span>
+          <span class="jg-se"><em>vencer<b>${pct0(v[o[0]])}</b></em><em>empatar<b>${pct0(v[o[1]])}</b></em><em>perder<b>${pct0(v[o[2]])}</b></em></span></li>`; }
     }
     return `<article class="jg${vivo ? ' vivo' : ''}${fim ? ' fim' : ''}"><span class="jg-st">${st}</span>
       <div class="jg-pl"><span class="jg-t">${cor(c)}${esc(nome(c))}</span><span class="jg-g">${placar}</span><span class="jg-t f">${esc(nome(f))}${cor(f)}</span></div>
